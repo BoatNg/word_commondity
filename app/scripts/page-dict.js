@@ -120,7 +120,7 @@ function fetchResult() {
     cognate,  // 同根词
     exampleSentence,
   }
-  console.log(data)
+  console.log(JSON.stringify(data))
 
   const elemTrans = document.querySelector('.trans-container')
   if (elemTrans && !elemTrans.getAttribute('id')) {

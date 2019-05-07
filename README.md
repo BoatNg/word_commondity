@@ -17,6 +17,7 @@ CREATE TABLE `words` (
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `user_id` varchar(36) NOT NULL COMMENT '用户id',
+  `user_name` varchar(36) NOT NULL COMMENT '用户名字',
   `email` varchar(36) DEFAULT NULL COMMENT '邮箱',
   `is_verify` varchar(36) DEFAULT NULL COMMENT '是否验证',
   `created_time` datetime DEFAULT NULL COMMENT '创建时间',

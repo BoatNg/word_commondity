@@ -92,7 +92,7 @@ function fetchResult() {
         cognatePOS = trim($(item).text())
       } else {
         let obj = {
-          POS: cognatePOS,
+          pos: cognatePOS,
           zh: trim(getTextNode(item).text()),
           en: trim($(item).find('a').text())
         }
@@ -114,7 +114,7 @@ function fetchResult() {
     value: $('#phrsListTab .keyword').text(),
     translation, // 翻译
     pronounce, // 发音
-    POS: $('#phrsListTab .additional').text(), // 词态
+    pos: $('#phrsListTab .additional').text(), // 词态
     wordGroup, // 词组
     synonyms, // 同义词
     cognate,  // 同根词

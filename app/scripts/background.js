@@ -13,6 +13,7 @@ function translateText(text) {
   const sourceText = trim(text)
   const cacheKey = `text:v2:${sourceText}`
   let result = lscache.get(cacheKey)
+  result = JSON.parse(result)
   return result ? Promise.resolve(result) : translator.translate(sourceText)
 }
 

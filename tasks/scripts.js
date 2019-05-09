@@ -12,10 +12,14 @@ const path = require('path')
 const ENV = args.production ? 'production' : 'development'
 
 gulp.task('scripts', (cb) => {
+  let REMOTE_HOST = 'https://www.boatng.com'
+  if (ENV === 'development') {
+    REMOTE_HOST = 'http://127.0.0.1:7001'
+  }
   return gulp.src('app/scripts/*.js')
     .pipe(plumber({
       // Webpack will log the errors
-      errorHandler () {}
+      errorHandler() { }
     }))
     .pipe(named())
     .pipe(gulpWebpack({
@@ -24,7 +28,8 @@ gulp.task('scripts', (cb) => {
       plugins: [
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify(ENV),
-          'process.env.VENDOR': JSON.stringify(args.vendor)
+          'process.env.VENDOR': JSON.stringify(args.vendor),
+          'REMOTE_HOST': JSON.stringify(REMOTE_HOST)
         })
       ].concat(args.production ? [
         new webpack.optimize.UglifyJsPlugin()
@@ -54,16 +59,16 @@ gulp.task('scripts', (cb) => {
         extensions: ['.js', '.json', '.vue']
       }
     },
-    webpack,
-    (err, stats) => {
-      if (err) return
-      log(`Finished '${colors.cyan('scripts')}'`, stats.toString({
-        chunks: false,
-        colors: true,
-        cached: false,
-        children: false
+      webpack,
+      (err, stats) => {
+        if (err) return
+        log(`Finished '${colors.cyan('scripts')}'`, stats.toString({
+          chunks: false,
+          colors: true,
+          cached: false,
+          children: false
+        }))
       }))
-    }))
     .pipe(gulp.dest(`dist/${args.vendor}/scripts`))
     .pipe(gulpif(args.watch, livereload()))
 })

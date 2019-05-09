@@ -2,14 +2,14 @@
 CREATE TABLE `words` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `word_id` varchar(36) NOT NULL COMMENT '词id',
-  `value` varchar(36) NOT NULL COMMENT '词',
-  `translation` datetime DEFAULT NULL COMMENT '翻译',
-  `pronounce` varchar(36) DEFAULT NULL COMMENT '发音',
-  `pos` varchar(36) DEFAULT NULL COMMENT '词态',
-  `word_group` varchar(36) DEFAULT NULL COMMENT '词组',
-  `synonyms` varchar(36) DEFAULT NULL COMMENT '同义词',
-  `cognate` varchar(36) DEFAULT NULL COMMENT '同根词',
-  `example_sentence` varchar(36) COMMENT '例句',
+  `value` longtext NOT NULL COMMENT '词',
+  `translation` longtext DEFAULT NULL COMMENT '翻译',
+  `pronounce` longtext DEFAULT NULL COMMENT '发音',
+  `pos` longtext DEFAULT NULL COMMENT '词态',
+  `word_group` longtext DEFAULT NULL COMMENT '词组',
+  `synonyms` longtext DEFAULT NULL COMMENT '同义词',
+  `cognate` longtext DEFAULT NULL COMMENT '同根词',
+  `example_sentence` longtext COMMENT '例句',
   `created_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

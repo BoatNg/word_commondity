@@ -1,11 +1,11 @@
 import { trim } from 'lodash'
 import wait from './helpers/wait'
 
-function inputSource (text) {
+function inputSource(text) {
   document.querySelector('#inputOriginal').value = text
 }
 
-function clickSubmit () {
+function clickSubmit() {
   const event = new window.MouseEvent('click', {
     bubbles: true,
     cancelable: true,
@@ -15,12 +15,12 @@ function clickSubmit () {
   document.querySelector('#transMachine').dispatchEvent(event)
 }
 
-function fetchResult () {
+function fetchResult() {
   const elem = document.querySelector('#transTarget')
   return trim(elem.innerText)
 }
 
-function onMessage (event) {
+function onMessage(event) {
   const { data } = event
   if (data.type === 'fetch-result') {
     console.log('[fanyi] iframe received message', JSON.stringify(data))
@@ -31,7 +31,10 @@ function onMessage (event) {
       event.source.postMessage({
         type: 'result',
         token: data.token,
-        result: { translation: result, status: 'success' }
+        result: {
+          value: data.text,
+          translation: [{ value: result }]
+        }
       }, '*')
     })
   }

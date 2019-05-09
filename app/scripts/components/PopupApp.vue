@@ -13,9 +13,6 @@
           @keydown.enter="translate"></textarea>
       </section>
 
-      <div class="result-wrapper">
-        <result :result="result" theme="light" v-if="result"></result>
-      </div>
 
       <footer>
         <a href="#" title="偏好设定" class="btn-settings" @click="settings">
@@ -38,7 +35,6 @@ import _ from 'lodash'
 import URL from 'url-parse'
 import OptionsLoader from '../mixins/options-loader'
 import Loader from './Loader.vue'
-import Result from './Result.vue'
 import { openExtensionPage } from '../helpers/utils'
 import { getActiveTab } from '../helpers/tabs'
 
@@ -122,7 +118,6 @@ export default {
   },
   components: {
     Loader,
-    Result
   },
 }
 </script>

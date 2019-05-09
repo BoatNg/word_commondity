@@ -38,12 +38,12 @@ function fetchResult() {
     }
   )
 
-  let wordGroup = []
+  let word_group = []
   let wordGroupDom = getTextNode('#wordGroup>p')
   $.each(
     $('#wordGroup>p>span>a'),
     function (ind, item) {
-      wordGroup.push({
+      word_group.push({
         zh: trim($(wordGroupDom[ind]).text()),
         en: item.innerText
       })
@@ -102,9 +102,9 @@ function fetchResult() {
   })
 
 
-  let exampleSentence = []
+  let example_sentence = []
   $.each($('#bilingual li'), function (ind, item) {
-    exampleSentence.push({
+    example_sentence.push({
       en: trim($(item).find('p:nth-child(1)').text()),
       zh: trim($(item).find('p:nth-child(2)').text())
     })
@@ -115,27 +115,27 @@ function fetchResult() {
     translation, // 翻译
     pronounce, // 发音
     pos: $('#phrsListTab .additional').text(), // 词态
-    wordGroup, // 词组
+    word_group, // 词组
     synonyms, // 同义词
     cognate,  // 同根词
-    exampleSentence,
+    example_sentence,
   }
   console.log(JSON.stringify(data))
+  return data
+  // const elemTrans = document.querySelector('.trans-container')
+  // if (elemTrans && !elemTrans.getAttribute('id')) {
+  //   const result = {
+  //     status: 'success',
+  //     translation: trim(elemTrans.innerHTML)
+  //   }
 
-  const elemTrans = document.querySelector('.trans-container')
-  if (elemTrans && !elemTrans.getAttribute('id')) {
-    const result = {
-      status: 'success',
-      translation: trim(elemTrans.innerHTML)
-    }
+  //   const elemPhon = document.querySelector('.baav')
+  //   if (elemPhon) {
+  //     result.phonetic = trim(elemPhon.innerText)
+  //   }
 
-    const elemPhon = document.querySelector('.baav')
-    if (elemPhon) {
-      result.phonetic = trim(elemPhon.innerText)
-    }
-
-    return result
-  }
+  //   return result
+  // }
 }
 
 function onMessage(event) {

@@ -30,7 +30,12 @@ gulp.task('scripts', (cb) => {
           'process.env.NODE_ENV': JSON.stringify(ENV),
           'process.env.VENDOR': JSON.stringify(args.vendor),
           'REMOTE_HOST': JSON.stringify(REMOTE_HOST)
-        })
+        }),
+        // new webpack.ProvidePlugin({
+        //   "$": "jquery",
+        //   "jQuery": "jquery",
+        //   "window.jQuery": "jquery"
+        // }),
       ].concat(args.production ? [
         new webpack.optimize.UglifyJsPlugin()
       ] : []),
@@ -49,15 +54,40 @@ gulp.task('scripts', (cb) => {
               }
             }
           },
+          // {
+          //   test: /\.(css)$/,
+          //   use: ["style-loader", "css-loader"]
+          // },
+          { test: /\.css$/, loader: "style!css" },
+          {
+            test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader", options: {
+              name: '../images/[name].[ext]'
+            }
+          },
+          {
+            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            use: [
+              {
+                loader: 'file-loader',
+              }
+            ]
+          },
         ]
       },
       resolve: {
         alias: {
           helpers: path.resolve(__dirname, 'app/scripts/helpers/'),
-          mixins: path.resolve(__dirname, 'app/scripts/mixins/')
+          mixins: path.resolve(__dirname, 'app/scripts/mixins/'),
+          // bind version of jquery-ui
+          // "jquery-ui": "jquery-ui/jquery-ui.js",
+          // bind to modules;
+          modules: path.resolve(__dirname, "node_modules"),
         },
         extensions: ['.js', '.json', '.vue']
-      }
+      },
+      // externals: {
+      //   jquery: 'jQuery'
+      // }
     },
       webpack,
       (err, stats) => {

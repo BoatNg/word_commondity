@@ -21,7 +21,7 @@ function smartText(text) {
 
 function cacheResult(text, result) {
   const key = `text:v2:${_.trim(text)}`
-  lscache.set(key, JSON.stringify(result), 60 * 24 * 30)
+  lscache.set(key, JSON.stringify(result), 60 * 24 * 7)
   return result
 }
 

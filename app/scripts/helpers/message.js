@@ -1,4 +1,4 @@
-export function dispatchMessage(mapping) {
+export function handleChromeRuntimeMessage(mapping) {
   chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
       const handler = mapping[message.type];

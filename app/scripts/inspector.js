@@ -1,4 +1,4 @@
-import { dispatchMessage } from './helpers/message'
+import { handleChromeRuntimeMessage } from './helpers/message'
 import { getSelection } from './helpers/selection'
 import { toggleLinkInspectMode } from './helpers/utils'
 

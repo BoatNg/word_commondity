@@ -56,7 +56,7 @@ export default {
         console.log(this.data);
         this.timer = setTimeout(() => {
           this.result.show = false;
-        }, this.result.timeout * 1000);
+        }, 8 * 1000);
       });
     },
     hide() {

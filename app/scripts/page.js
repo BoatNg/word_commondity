@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import Vue from 'vue'
-import { dispatchMessage } from './helpers/message'
+import { handleChromeRuntimeMessage } from './helpers/message'
 import { toggleLinkInspectMode } from './helpers/utils'
 import ResultList from './components/ResultList.vue'
 
@@ -27,4 +27,4 @@ function toggleLink (message, sender, sendResponse) {
   // toggleLinkInspectMode()
 }
 
-dispatchMessage({ translate, toggleLink })
+handleChromeRuntimeMessage({ translate, toggleLink })

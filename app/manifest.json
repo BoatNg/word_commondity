@@ -66,7 +66,8 @@
     "webRequest",
     "webRequestBlocking",
     "*://fanyi.youdao.com/*",
-    "*://dict.youdao.com/*"
+    "*://dict.youdao.com/*",
+    "*://www.boatng.com/*"
   ],
 
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"

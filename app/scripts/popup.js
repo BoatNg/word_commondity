@@ -1,11 +1,12 @@
-import 'vue-awesome/icons/cog'
 
 import Vue from 'vue'
-import Icon from 'vue-awesome/components/Icon'
 import PopupApp from './components/PopupApp.vue'
+import ElementUI from 'element-ui';
+import jQuery from "jquery";
+import uiInit from "./helpers/jquery-ui.min";
+uiInit(jQuery);
 
-Vue.component('icon', Icon)
-
+Vue.use(ElementUI);
 new Vue({
   el: '#app',
   render: h => h(PopupApp),

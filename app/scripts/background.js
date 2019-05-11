@@ -1,5 +1,5 @@
 import storage from 'chrome-storage-wrapper'
-import { dispatchMessage } from './helpers/message'
+import { handleChromeRuntimeMessage } from './helpers/message'
 import { getActiveTab } from './helpers/tabs'
 import defaults from './config/defaults'
 import lscache from 'lscache'
@@ -21,7 +21,7 @@ function isWord(text) {
   return PAT_WORD.test(text)
 }
 
-dispatchMessage({
+handleChromeRuntimeMessage({
   translate(message, sender, sendResponse) {
     console.trace('background translate')
     console.log('message', message)

@@ -32,7 +32,7 @@ $theme_color: #93b5cf;
 
   .cst-result-translation {
     overflow-y: auto;
-    max-height: 200px;
+    max-height: 200px;  
   }
 }
 .additional {
@@ -135,7 +135,9 @@ $theme_color: #93b5cf;
 .ctx_result_collect {
   >a {
     display: inline-block;
-    color: #5698c3 !important;
+    color: #61649f !important;
     font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 300;
   }
 }

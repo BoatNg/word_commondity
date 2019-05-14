@@ -163,7 +163,7 @@ export default {
                 setTimeout(() => {
                   let res = data.data;
                   $("#user_name").text(res.email);
-                  // $("#count").text(res.words_count);
+                  $("#count").text(res.words_count);
                   res.login_time = new Date().getTime();
                   chrome.storage.sync.set({ user_info: res });
                   loginSuccess();

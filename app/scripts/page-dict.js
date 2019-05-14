@@ -120,7 +120,7 @@ function fetchResult() {
     cognate,  // 同根词
     example_sentence,
   }
-  console.log(JSON.stringify(data))
+  // console.log(JSON.stringify(data))
   return data
   // const elemTrans = document.querySelector('.trans-container')
   // if (elemTrans && !elemTrans.getAttribute('id')) {
@@ -140,7 +140,7 @@ function fetchResult() {
 
 function onMessage(event) {
   const { data } = event
-  console.log('[dict] iframe received message:', JSON.stringify(data))
+  // console.log('[dict] iframe received message:', JSON.stringify(data))
   if (data.type === 'fetch-result') {
     wait(fetchResult).then(result => {
       event.source.postMessage({

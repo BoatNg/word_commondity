@@ -24,15 +24,15 @@ function isWord(text) {
 
 handleChromeRuntimeMessage({
   translate(message, sender, sendResponse) {
-    console.trace('background translate')
-    console.log('message', message)
-    console.log('sender', sender)
+    // console.trace('background translate')
+    // console.log('message', message)
+    // console.log('sender', sender)
     storage.get('notifyTimeout').then(options => {
-      console.trace('storage')
-      console.log(options)
+      // console.trace('storage')
+      // console.log(options)
       translateText(message.text).then(result => {
-        console.trace('translateText')
-        console.log(result)
+        // console.trace('translateText')
+        // console.log(result)
         if (message.from === 'page') {
           result.timeout = options.notifyTimeout
         } else {

@@ -139,7 +139,7 @@ export default {
           }).then(res => {
             let result = res.data;
             $("#count").text(result.data.count);
-            console.log(res);
+            // console.log(res);
           });
           return;
         }
@@ -158,7 +158,7 @@ export default {
             })
             .then(result => {
               const { data } = result;
-              console.log(data);
+              // console.log(data);
               if (data.code < 400) {
                 setTimeout(() => {
                   let res = data.data;

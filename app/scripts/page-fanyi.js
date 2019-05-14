@@ -23,7 +23,7 @@ function fetchResult() {
 function onMessage(event) {
   const { data } = event
   if (data.type === 'fetch-result') {
-    console.log('[fanyi] iframe received message', JSON.stringify(data))
+    // console.log('[fanyi] iframe received message', JSON.stringify(data))
     inputSource(data.text)
     clickSubmit()
 

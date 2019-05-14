@@ -26,7 +26,7 @@ function cacheResult(text, result) {
 }
 
 function translate(text) {
-  console.trace('translate')
+  // console.trace('translate')
   const sourceText = smartText(text)
 
   if (!sourceText) {

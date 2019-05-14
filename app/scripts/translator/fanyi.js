@@ -20,7 +20,7 @@ export default class Fanyi {
   receive (event) {
     const { data } = event
     if (data.type === 'result' && data.token === this.token) {
-      console.log('[fanyi] event received message:', JSON.stringify(data))
+      // console.log('[fanyi] event received message:', JSON.stringify(data))
       this.result = data.result
     }
   }

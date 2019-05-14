@@ -3,7 +3,7 @@ import { getSelection } from './helpers/selection'
 import { toggleLinkInspectMode } from './helpers/utils'
 
 function selectionHandler(evt) {
-  console.trace('selectionHandler')
+  // console.trace('selectionHandler')
   // toggleLinkInspectMode(false)
 
   const text = getSelection()

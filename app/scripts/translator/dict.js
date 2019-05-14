@@ -15,7 +15,7 @@ export default class Dict {
 
   receive (event) {
     const { data } = event
-    console.log('[dict] event received message:', JSON.stringify(data))
+    // console.log('[dict] event received message:', JSON.stringify(data))
     if (data.type === 'result' && data.url === this.url) {
       this.result = data.result
     }
@@ -44,7 +44,7 @@ export default class Dict {
 }
 
 Dict.translate = function (text) {
-  console.trace('Dict translate')
+  // console.trace('Dict translate')
   let dict = new Dict()
   return dict.translate(text).finally(() => {
     dict.destroy()

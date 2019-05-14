@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     translate() {
-      console.trace("resutl toast translate");
+      // console.trace("resutl toast translate");
       this.isLoading = true;
       const message = {
         type: "translate",
@@ -69,7 +69,7 @@ export default {
       chrome.runtime.sendMessage(message, result => {
         this.isLoading = false;
         this.data = Object.assign({}, result);
-        console.log(this.data);
+        // console.log(this.data);
         this.timer = setTimeout(() => {
           this.result.show = false;
         }, 8 * 1000);

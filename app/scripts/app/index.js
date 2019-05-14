@@ -26,7 +26,7 @@ function setOptions(newOptions) {
 }
 
 function getOptions() {
-  if (_.empty(options)) {
+  if (!options) {
     return Promise.resolve(options)
   } else {
     return storage.getAll()

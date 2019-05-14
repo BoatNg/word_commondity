@@ -7,7 +7,6 @@ function selectionHandler(evt) {
   // toggleLinkInspectMode(false)
 
   const text = getSelection()
-
   if (text) {
     chrome.runtime.sendMessage({ type: 'selection', text: text })
   }

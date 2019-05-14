@@ -6,6 +6,7 @@ import lscache from 'lscache'
 import translator from './translator'
 import { trim } from 'lodash'
 import app from './app'
+import _ from 'lodash'
 
 const PAT_WORD = /^[a-z]+('|'s)?$/i
 
@@ -37,25 +38,45 @@ handleChromeRuntimeMessage({
         } else {
           window.localStorage.setItem('current', message.text)
         }
-
-        sendResponse(result)
+        chrome.storage.sync.get(["user_info"], data => {
+          result.user_info = {}
+          let { user_info } = data;
+          if (user_info && user_info.token) {
+            let login_time = user_info.login_time;
+            let now = new Date().getTime();
+            if (now - login_time < 1000 * 60 * 60 * 24 * 7) {
+              result.user_info = user_info
+            }
+          }
+          sendResponse(result)
+        })
       })
     })
   },
 
   selection(message, sender, sendResponse) {
-    window.localStorage.setItem('current', message.text)
-    console.trace('selection')
-    if (isWord(message.text)) {
-      getActiveTab(tab => {
-        if (app.isSiteEnabled(tab.hostname)) {
-          chrome.tabs.sendMessage(sender.tab.id, {
-            type: 'translate',
-            text: message.text
+    chrome.storage.sync.get(["option_config"], data => {
+      let { option_config } = data;
+      if (option_config) {
+
+      } else {
+        if (option_config.is_selection === undefined) {
+          option_config.is_selection = true;
+        }
+      }
+      if (option_config.is_selection) {
+        window.localStorage.setItem('current', message.text)
+        if (isWord(message.text)) {
+          getActiveTab(tab => {
+            chrome.tabs.sendMessage(sender.tab.id, {
+              type: 'translate',
+              text: message.text
+            })
           })
         }
-      })
-    }
+      }
+    })
+
   },
 
   current(message, sender, sendResponse) {

@@ -3,8 +3,8 @@ import lscache from 'lscache'
 import Dict from './dict'
 import Fanyi from './fanyi'
 import { words } from 'lodash'
+// import axios from 'axios'
 import $ from 'jquery'
-
 const PAT_WORD = /^([a-z]+-?)+$/i
 const RESULT_FAILURE = {
   translation: '未找到释义',
@@ -41,6 +41,8 @@ function translate(text) {
           } else {
             return RESULT_FAILURE
           }
+        }).catch(err=> {
+          return RESULT_FAILURE
         })
       })
       .catch(() => RESULT_FAILURE)

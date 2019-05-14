@@ -87,6 +87,7 @@ export default {
         return;
       }
       this.collect_text = "[收藏中...]";
+      clearTimeout(this.timer);
       let word_id = this.data.word_id;
       let token = this.data.user_info.token;
       axios({
@@ -98,9 +99,19 @@ export default {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }).then(res => {
-        this.collect_text = "[收藏成功]";
-      });
+      })
+        .then(res => {
+          this.collect_text = "[收藏成功]";
+          this.timer = setTimeout(() => {
+            this.result.show = false;
+          }, 3 * 1000);
+        })
+        .catch(err => {
+          this.collect_text = "[收藏失败]";
+          this.timer = setTimeout(() => {
+            this.result.show = false;
+          }, 3 * 1000);
+        });
     }
   },
   components: {}

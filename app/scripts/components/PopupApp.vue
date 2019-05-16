@@ -10,7 +10,7 @@
             <div class="icon">
               <img src="../../images/img/user_icon_copy.png">
             </div>
-            <input placeholder="用户名" type="text">
+            <input placeholder="邮箱" type="text">
             <div class="validation">
               <img src="../../images/img/tick.png">
             </div>

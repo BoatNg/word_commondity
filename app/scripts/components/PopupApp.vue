@@ -41,7 +41,7 @@
             <b id="qrcode">小程序</b>&nbsp;上复习吧
           </p>
           <div class="qrcode_wrap">
-            <img src="../../images/img/ycx-mp.jpg">
+            <img src="../../images/qrcode.jpg">
           </div>
         </div>
         <div class="disclaimer">
